@@ -6,31 +6,46 @@ use Jenssegers\Blade\Blade;
 
 class Welcome extends CI_Controller
 {
-    /**
-     * Index Page for this controller.
-     *
-     * Maps to the following URL
-     * 		http://example.com/index.php/welcome
-     *	- or -
-     * 		http://example.com/index.php/welcome/index
-     *	- or -
-     * Since this controller is set as the default controller in
-     * config/routes.php, it's displayed at http://example.com/
-     *
-     * So any other public methods not prefixed with an underscore will
-     * map to /index.php/welcome/<method_name>
-     * @see https://codeigniter.com/userguide3/general/urls.html
-     */
+    
     public function index()
     {
+        $nama = $this->input->post('nama');
+        $nim = $this->input->post('nim');
+        $umur = $this->input->post('umur');
+        $kategori = $this->input->post('kategori');
+        
+        
         $blade = new Blade(VIEWPATH, APPPATH . 'cache');
         echo $blade->make('form', [])->render();
     }
 
     public function tampil()
-    {
-        $nama = 'tata';
+    { 
+        
+        $nama = $this->input->post('nama');
+        $nim = $this->input->post('nim');
+        $umur = $this->input->post('umur');
+        $kategori = $this->input->post('kategori');
+
+
+        if(($umur >=0)&& ($umur <=10)){
+            $kategori = 'Anak';
+           }
+           elseif(($umur >10)&& ($umur <=20)){
+            $kategori = 'Remaja';
+           }
+           elseif(($umur >20)&& ($umur <=30)){
+            $kategori = 'Dewasa';
+           }
+           elseif($umur >30){
+            $kategori = 'Tua';
+           }
+
+           
         $blade = new Blade(VIEWPATH, APPPATH . 'cache');
-        echo $blade->make('tampil', ['nama' => $nama])->render();
+         echo $blade->make('tampil', ['nama' => $nama, 'nim' => $nim, 'umur' => $umur, 'kategori'=>$kategori])->render();
+
+        
+       
     }
 }
