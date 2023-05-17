@@ -36,10 +36,10 @@
     <div class="row g-5">
       <div class="col-md-6">
         <h2 class="text-body-emphasis">Tampil Input Data</h2>
-        <p>Nama : {{ $nama }}  </p>
-        <p>Nim : {{ $nim }} </p>
-        <p>Umur : {{ $umur }} </p>
-        <p>kategori : {{ $kategori }} </p>
+        <p>Nama : {{ $nama  }}</p>
+        <p>Nim : {{ $nim }}</p>
+        <p>Umur : {{ $umur }}</p>
+        <p>Status : {{ $status }}</p>
       </div>
     </div>
   </main>
